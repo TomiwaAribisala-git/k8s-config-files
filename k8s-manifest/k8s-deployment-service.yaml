@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: xxx
+ labels:
+  app: xxx
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: xxx
+ template:
+  metadata:
+   labels:
+    app: xxx
+  spec:
+   containers:
+    - name: xxx
+      image: xxx
+      ports:
+       - containerPort: 27017
+      volumeMounts:
+       - name: xxx
+         mountPath: /xx/xxx
+       - name: xxx
+         mountPath: /xx/xxx
+         readOnly: true
+      env:
+       - name: xxx
+         valueFrom:
+          secretKeyRef:
+           name: xxx
+           key: xxx
+       - name: xxx
+         valueFrom:
+          secretKeyRef:
+           name: xxx
+           key: xxx
+  volumes:
+     - name: xxx
+       configMap:
+        name: xxx
+        items: 
+         - key:
+           path:
+     - name: xxx
+       secret:
+        secretName: xxx
+        items:
+         - key:
+           path:
+
+...
+apiVersion: v1
+kind: Service
+metadata:
+ name: xxx
+spec:
+ type: ClusterIP OR NodePort
+ selector:
+  app: xxx
+ ports:
+  - protocol: TCP
+    port: [80]
+    targetPort: [8080]
+    nodePort: xxx

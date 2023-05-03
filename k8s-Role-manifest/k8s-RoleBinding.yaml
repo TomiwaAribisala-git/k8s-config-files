@@ -1,0 +1,74 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: 
+ name: jane-developer-binding
+ namespace: default
+subjects: 
+ - kind: User
+   name: jane
+   apiGroup: rbac.authorization.k8s.io
+roleRef:
+ kind: Role
+ name: developer
+ apiGroup: rbac.authorization.k8s.io
+
+...
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: 
+ name: jane-developer-group-binding
+ namespace: default
+subjects: 
+ - kind: Group
+   name: "devops-admins"
+   apiGroup: rbac.authorization.k8s.io
+roleRef:
+ kind: Role
+ name: developer
+ apiGroup: rbac.authorization.k8s.io
+
+...
+For the default service account in the "kube-system":
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: 
+ name: serviceaccount-binding
+subjects: 
+ - kind: ServiceAccount
+   name: default
+   namespace: kube-system
+roleRef:
+ kind: Role
+ name: developer
+ apiGroup: rbac.authorization.k8s.io
+
+...
+For a service account in the "qa" namespace:
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: 
+ name: serviceaccount-a1-binding
+subjects: 
+ - kind: ServiceAccount
+   name: system:serviceaccount-a1:qa
+   apiGroup: rbac.authorization.k8s.io
+roleRef:
+ kind: Role
+ name: developer
+ apiGroup: rbac.authorization.k8s.io
+
+
+...
+For all service accounts in the "qa" namespace:
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: 
+ name: serviceaccounts-binding
+subjects: 
+ - kind: Group
+   name: system:serviceaccounts:qa
+   apiGroup: rbac.authorization.k8s.io
+roleRef:
+ kind: Role
+ name: developer
+ apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata: 
+ name: cluster-admin
+rules: 
+ - apiGroups: [""]
+   resources: ["cluster-wide-resources"] # e.g nodes, namespaces, pods/deployments/services in any namespace
+   verbs: ["get", "create", "watch", "list", "delete", "update"]
