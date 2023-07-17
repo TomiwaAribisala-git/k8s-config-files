@@ -4,7 +4,7 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [Grafana](grafana/grafana.yaml)
 
-[Cluster Autoscaler]()
+[Cluster Autoscaler](k8s-autoscaler/k8s-autoscaler.yaml)
 
 [ClusterRole]()
 
