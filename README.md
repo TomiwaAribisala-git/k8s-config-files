@@ -2,7 +2,7 @@
 
 Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps, Secrets, Deployment, Service, Kubeconfig, Ingress, Grafana, Prometheus, and Cluster Autoscaler.
 
-[Grafana](grafana\grafana.yaml)
+[Grafana](grafana/grafana.yaml)
 
 [Cluster Autoscaler]()
 
