@@ -8,9 +8,9 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [ClusterRole](k8s-clusterRole-manifest/k8s-clusterRole.yaml)
 
-[ClusterRoleBinding](k8s-clusterRole-manifest\k8s-clusterRoleBinding.yaml)
+[ClusterRoleBinding](k8s-clusterRole-manifest/k8s-clusterRoleBinding.yaml)
 
-[Configmap]()
+[Configmap](k8s-configmap-manifest/k8s-configmap.yaml)
 
 [Configmap-Volume]()
 
