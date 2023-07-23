@@ -14,7 +14,7 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [Configmap-Volume](k8s-configmap-volume-manifest/k8s-configmap-volume.yaml)
 
-[Secret]()
+[Secret](k8s-Secret-manifest/k8s-secret.yaml)
 
 [Secret-Volume]()
 
