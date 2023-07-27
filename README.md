@@ -18,9 +18,9 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [Secret-Volume](k8s-Secret-volume-manifest/k8s-secret-volume.yaml)
 
-[Ingress]()
+[Ingress](k8s-ingress-manifest/k8s-ingress.yaml)
 
-[Deployment]()
+[Deployment](k8s-manifest/k8s-deployment-service.yaml)
 
 [Service]()
 
