@@ -56,7 +56,7 @@ kind: Service
 metadata:
  name: xxx
 spec:
- type: ClusterIP OR NodePort
+ type: LoadBalancer OR NodePort
  selector:
   app: xxx
  ports:

@@ -31,3 +31,5 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 [Volumes]()
 
 [KubeConfig]()
+
+[Namespace]()
