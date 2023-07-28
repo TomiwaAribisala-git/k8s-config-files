@@ -22,7 +22,7 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [Deployment](k8s-manifest/k8s-deployment-service.yaml)
 
-[Service]()
+[Service](k8s-manifest/k8s-deployment-service.yaml)
 
 [Role]()
 
