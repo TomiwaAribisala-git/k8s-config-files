@@ -4,3 +4,28 @@ metadata:
  name: xxx-configmap
 data:
  database_url: xxx-service
+
+...
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: xxx
+data:
+ # mosquito.conf: | 
+  # log_dest stdout
+  # log_type all
+  # log_timestamp true
+  # listener 9001
+
+...
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-config
+data:
+  test.conf: |
+    env = plex-test
+    endpoint = 0.0.0.0:31001
+    char = utf8
+    vault = PLEX/test
+    log-size = 512M
