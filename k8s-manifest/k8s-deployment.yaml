@@ -49,18 +49,3 @@ spec:
         items:
          - key:
            path:
-
-...
-apiVersion: v1
-kind: Service
-metadata:
- name: xxx
-spec:
- type: LoadBalancer OR NodePort
- selector:
-  app: xxx
- ports:
-  - protocol: TCP
-    port: [80]
-    targetPort: [8080]
-    nodePort: xxx

@@ -11,11 +11,11 @@ kind: ConfigMap
 metadata:
  name: xxx
 data:
- # mosquito.conf: | 
-  # log_dest stdout
-  # log_type all
-  # log_timestamp true
-  # listener 9001
+ mosquito.conf: | 
+   log_dest stdout
+   log_type all
+   log_timestamp true
+   listener 9001
 
 ...
 apiVersion: v1
