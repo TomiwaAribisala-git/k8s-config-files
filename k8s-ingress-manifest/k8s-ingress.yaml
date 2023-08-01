@@ -1,83 +1,101 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
- name: xxx-ingress
+  name: svc-shield
 spec:
- rules:
-  - host: [myapp.com]
-    http:
-     paths:
-      - backend:
-         serviceName: xxx-internal-service
-         servicePort: [8080]
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    env: shield
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-hydra
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    env: hydra
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shield
+  labels:
+    env: shield
+spec:
+  containers:
+  - image: nigelpoulton/k8sbook:shield-ingress
+    name: shield-ctr
+    ports:
+    - containerPort: 8080
+    imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hydra
+  labels:
+    env: hydra
+spec:
+  containers:
+  - image: nigelpoulton/k8sbook:hydra-ingress
+    name: hydra-ctr
+    ports:
+    - containerPort: 8080
+    imagePullPolicy: Always
 
-# path based routing
 ...
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
- name: simple-fanout-example
- annotations:
-  nginx.ingress.kubernetes.io/rewrite-target: /
+  name: mcu-all
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
- rules:
-  - host: myapp.com
+  ingressClassName: nginx
+  rules:
+  # host based routing
+  - host: shield.mcu.com
     http:
-     paths:
-      - path: /analytics
+      paths:
+      - path: /
+        pathType: Prefix
         backend:
-          serviceName: analytics-service
-          servicePort: 3000
-      - path: /shopping
+          service:
+            name: svc-shield
+            port:
+              number: 8080
+  - host: hydra.mcu.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
         backend:
-          serviceName: shopping-service
-          servicePort: 8080
-
-# host based routing
-...
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
- name: simple-fanout-example
-spec:
- rules:
-  - host: analytics.myapp.com
+          service:
+            name: svc-hydra
+            port:
+              number: 8080
+    # path based routing
+  - host: mcu.com
     http:
-     paths:
-      backend:
-       serviceName: analytics-service
-       servicePort: 3000
-  - host: shopping.myapp.com
-    http:
-     paths:
-      backend:
-       serviceName: shopping-service
-       servicePort: 8080
-
-...
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
- name: tls-example-ingress
-spec:
- tls:
-  - host: myapp.com  
-    secretName: myapp-secret-tls 
- rules:
-  - host: myapp.com
-    http:
-     paths:
-      backend:
-      serviceName: myapp-internal-service
-      servicePort: 8080
-
-...
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
- name: myapp-secret-tls
- namespace: default
-data:
- tls.crt: base64 encoded cert
- tls.key: base64 encoded key
-type: kubernetes.io/tls
+      paths:
+      - path: /shield
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-shield
+            port:
+              number: 8080
+      - path: /hydra
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-hydra
+            port:
+              number: 8080
