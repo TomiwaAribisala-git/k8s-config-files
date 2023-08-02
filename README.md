@@ -26,7 +26,7 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [RoleBinding](k8s-Role-manifest/k8s-RoleBinding.yaml)
 
-[Storage]()
+[Storage](k8s-storage-manifest/k8s-storage.yml)
 
 [KubeConfig]()
 
