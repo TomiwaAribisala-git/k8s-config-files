@@ -28,7 +28,7 @@ Kubernetes manifest(s) template across Roles, ClusterRoles, Volumes, Configmaps,
 
 [Storage](k8s-storage-manifest/k8s-storage.yml)
 
-[KubeConfig]()
+[KubeConfig](kube-config/kube-config.yml)
 
 [Namespace](k8s-namespace-manifest/namespace.yml)
 
