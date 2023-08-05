@@ -1,8 +1,8 @@
 apiVersion: v1
 clusters:
  - cluster:
-    server: []
-    certificate-authority-data: []
+    server: [] # cluster server endpoint
+    certificate-authority-data: [] # cluster certficate-authority-data
    name: kubernetes
 contexts:
  - context:
@@ -21,4 +21,4 @@ users:
     args:
      - "token"
      - "-i" 
-     - <cluster name>
+     - <cluster name> # cluster name
